@@ -15,7 +15,7 @@ def get_image():
         else:
             return image
 
-def resize_image(image,new_width = 250):#Use Can Resize your image from here
+def resize_image(image,new_width = 250):#You Can Resize your image from here
     """Resizes a given image to the specfied width and height and returns it"""
     width,height = image.size
     ratio = height/width
@@ -41,18 +41,18 @@ def add_newlines(string,width):
         rows.append(string[i:i+width])
     return '\n'.join(rows)
 
-#Main Logic
 def main():
     image = get_image() #Getting The Image
     new_image = gray_scaling_image(resize_image(image)) # GrayScaling and Resizing the image
     width,_ = new_image.size #Getting the new image width
-    image_ascii_data = pixel_to_ascii(new_image)
-    ascii_image = add_newlines(image_ascii_data,width)
+    image_ascii_data = pixel_to_ascii(new_image)#Converting Pixels to Ascii Characters
+    ascii_image = add_newlines(image_ascii_data,width)#Adding Newlines
     try:
         save_as = input('Save Ascii Art as : ' )
         with open(f'{save_as.strip()}.txt','w+') as f:
             f.write(ascii_image)
     except:
         print('There was a Error Making your Ascii Art.')
+        
 if __name__ == '__main__':
     main()
